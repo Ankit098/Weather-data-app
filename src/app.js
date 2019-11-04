@@ -55,14 +55,14 @@ app.get('/weather', (req, res) => {
                 error : error
             })
         }
-        forecast(lattitude, longitude, (error, {summary, temperature, rainChance} = {})=>{
+        forecast(lattitude, longitude, (error, {summary, temperature, rainChance, tHigh, tLow} = {})=>{
             if(error){
                 return res.send({
                     error : error
                 })
             }
             res.send({
-                forecast: `${summary} Currently it is ${temperature}^C out with ${rainChance}% chance of rain`,
+                forecast: `${summary} Today's high is ${tHigh}^C while low is ${tLow}^C. Currently it is ${temperature}^C out. There is ${rainChance}% chance of rain.`,
                 location: location
             })
         })
